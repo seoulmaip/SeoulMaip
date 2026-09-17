@@ -1,5 +1,46 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <!-- NAVER 전환추적 시작 -->
+<script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>
+
+<script type="text/javascript">
+  if (!wcs_add) var wcs_add = {};
+  wcs_add["wa"] = "s_59ea1afd083";
+
+  if (window.wcs) {
+    wcs.inflow("seoulmaip.co.kr");
+    wcs_do();
+  }
+
+  function sendNaverConversion(type) {
+    try {
+      if (window.wcs) {
+        var _conv = {};
+        _conv.type = type;
+        wcs.trans(_conv);
+      }
+    } catch (e) {}
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+
+    /* 전화상담 클릭 = custom002 */
+    document.querySelectorAll('a[href^="tel:"]').forEach(function (el) {
+      el.addEventListener("click", function () {
+        sendNaverConversion("custom002");
+      });
+    });
+
+    /* 카카오톡 상담 클릭 = custom001 */
+    document.querySelectorAll('a[href*="pf.kakao.com"]').forEach(function (el) {
+      el.addEventListener("click", function () {
+        sendNaverConversion("custom001");
+      });
+    });
+
+  });
+</script>
+<!-- NAVER 전환추적 끝 -->
 <head>
   <meta charset="UTF-8" />
   <meta name="naver-site-verification" content="89fe111d63859ea18b18f820b82e5dec4017d4d" />
